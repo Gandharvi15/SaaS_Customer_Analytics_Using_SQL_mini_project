@@ -1,97 +1,93 @@
-📊 SaaS Customer and Revenue Analysis (SQL Project)
-📁 Project Overview
 
-This project analyzes a SaaS (Software-as-a-Service) business dataset to uncover insights about customer behavior, churn, revenue, and business performance using SQL queries.
 
-The analysis focuses on metrics such as customer lifetime, churn rate, Monthly Recurring Revenue (MRR), Customer Acquisition Cost (CAC), and Lifetime Value (LTV) — helping understand key growth and retention factors for a subscription-based business.
+# 📊 SaaS Customer Analytics Using SQL
 
-🧩 Dataset Description
+This project analyzes key business metrics for a **SaaS (Software-as-a-Service)** company using **SQL**. It provides insights into customer behavior, churn, revenue, and growth through structured SQL queries.
 
-The project uses three relational tables:
+---
 
-customers – Contains customer details such as:
+## 🧠 Project Overview
 
-customer_id, signup_date, churn_date, plan_type, acquisition_cost
+SaaS businesses rely on understanding their **customer base**, **revenue trends**, and **retention patterns**.
+This project uses SQL to explore and analyze customer and subscription data, helping answer questions like:
 
-subscriptions – Tracks unique subscriptions per customer:
+* How many customers are active or churned?
+* What is the **average customer lifetime**?
+* Which **subscription plan** brings the most revenue?
+* What are the **MRR (Monthly Recurring Revenue)**, **LTV (Lifetime Value)**, and **CAC (Customer Acquisition Cost)**?
 
-subscription_id, customer_id, plan_id, etc.
+---
 
-revenue – Contains revenue details:
+## 🗂️ Dataset Description
 
-customer_id, monthly_fee, plan_type, etc.
+The project assumes the following database structure:
 
-🧠 Key SQL Insights
-1️⃣ Total Customers
+| Table Name        | Description                                                                          |
+| ----------------- | ------------------------------------------------------------------------------------ |
+| **customers**     | Contains customer details, signup date, churn date, plan type, and acquisition cost. |
+| **subscriptions** | Tracks all customer subscription records.                                            |
+| **revenue**       | Contains revenue and monthly fee details for each customer.                          |
 
-168 unique customers were recorded in the subscriptions table.
-📈 Represents distinct individuals/accounts using the service.
+**Key Columns:**
 
-2️⃣ Active vs. Canceled Customers
+* `customer_id` – Unique customer identifier
+* `signup_date` – Date customer subscribed
+* `churn_date` – Date customer canceled (NULL if active)
+* `plan_type` – Type of plan (Basic, Pro, Enterprise)
+* `monthly_fee` – Monthly payment amount
+* `acquisition_cost` – Cost of acquiring a customer
 
-All 1,000 customers have churned, indicating no active subscriptions remain.
-⚠️ Potential issue with retention or end of subscription cycle.
+---
 
-3️⃣ Monthly Recurring Revenue (MRR)
+## ⚙️ SQL Analyses Performed
 
-MRR is calculated from active customers (none currently active).
-💰 MRR is currently zero due to full churn.
+### 1️⃣ Total Number of Customers
 
-4️⃣ Average Customer Lifetime
+Count unique customers to find the total user base.
 
-Average lifetime = 4.87 months.
-⏳ Customers typically stay subscribed for ~5 months before canceling.
+### 2️⃣ Active vs. Churned Customers
 
-5️⃣ Customer Acquisition Cost (CAC)
+Compare currently active customers vs. those who have churned.
 
-Average CAC = $110.11
-💸 The company spends ~$110 to acquire each new customer.
+### 3️⃣ Monthly Recurring Revenue (MRR)
 
-6️⃣ Lifetime Value (LTV) by Plan
-Plan Type	Avg LTV ($)
-Enterprise	3800.9
-Pro	1643.7
-Basic	371.6
+Calculate total recurring revenue from active subscriptions.
 
-💼 Higher-tier plans (Enterprise, Pro) contribute significantly more value.
+### 4️⃣ Average Customer Lifetime (in Months)
 
-7️⃣ Monthly New Customer Count
+Measure how long customers stay subscribed before churn.
 
-Average 50–60 new signups per month, peaking in November 2024 (67).
-📊 Indicates steady acquisition and a growth peak that month.
+### 5️⃣ Customer Acquisition Cost (CAC)
 
-8️⃣ Monthly Churn Rate
+Find the average cost spent on acquiring new customers.
 
-Shows monthly churn percentage.
-📉 High churn months may indicate service or pricing issues.
+### 6️⃣ Lifetime Value (LTV) by Plan Type
 
-9️⃣ Average Revenue per User (ARPU)
-Plan Type	Total Revenue ($)
-Enterprise	167,000
-Pro	66,800
-Basic	16,000
+Estimate how much revenue each plan type brings over its customer lifetime.
 
-💰 Enterprise plan drives the majority of total revenue.
+### 7️⃣ Monthly New Customer Count
 
-🔟 Top 5 Longest-Subscribed Customers
+Track customer acquisition trends month-by-month.
 
-Longest subscription: 16 months, others: 14–15 months.
-👥 Identifying these customers can help target retention strategies.
+### 8️⃣ Churn Rate by Month
 
-🧾 Conclusion
+Measure customer churn rate monthly to identify retention challenges.
 
-This SQL-based analysis provides a comprehensive overview of the SaaS company’s customer dynamics and financial health:
+### 9️⃣ Average Revenue per User (ARPU)
 
-Customer retention is low (high churn).
+Calculate revenue contribution per plan.
 
-Premium plans drive the majority of revenue.
+### 🔟 Top 5 Longest-Subscribed Customers
 
-Average customer lifetime is ~5 months.
+Identify customers who stayed subscribed the longest.
 
-Acquisition cost and churn patterns highlight areas for marketing and service improvement.
+---
 
-🛠️ Tools & Technologies
+## 🧩 Tools & Technologies
 
-SQL (MySQL / PostgreSQL compatible)
+* **SQL** – MySQL syntax used for querying
+* **Database Management System:** MySQL / PostgreSQL (compatible)
+* **Dataset Source:** Simulated SaaS dataset
 
-Data Source: Simulated SaaS business dataset
+---
+
